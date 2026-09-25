@@ -5,7 +5,7 @@
 # Load the Iris dataset
 data(iris)
 
-# View the first few observations
+# View the first observations
 head(iris)
 
 # Check the structure of the dataset
@@ -14,7 +14,7 @@ str(iris)
 # Summary statistics
 summary(iris)
 
-# Calculate the mean of each numerical variable
+# Calculate means
 mean(iris$Sepal.Length)
 mean(iris$Sepal.Width)
 mean(iris$Petal.Length)
@@ -29,11 +29,23 @@ sd(iris$Petal.Width)
 # Frequency of each species
 table(iris$Species)
 
-# Scatter plot of Sepal Length and Sepal Width
+# Compare mean measurements by species
+aggregate(. ~ Species, data = iris, mean)
+
+# Scatter plot
 plot(
   iris$Sepal.Length,
   iris$Sepal.Width,
   main = "Sepal Length vs Sepal Width",
   xlab = "Sepal Length",
   ylab = "Sepal Width"
+)
+
+# Boxplot of petal length by species
+boxplot(
+  Petal.Length ~ Species,
+  data = iris,
+  main = "Petal Length by Species",
+  xlab = "Species",
+  ylab = "Petal Length"
 )
